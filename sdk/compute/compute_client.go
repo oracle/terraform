@@ -33,7 +33,7 @@ func NewComputeClient(identityDomain, userName, password string, apiEndpoint *ur
 
 	if allowInsecureEndpoint == true {
 		cfg = &tls.Config{
-			InsecureSkipVerify: false,
+			InsecureSkipVerify: true,
 		}
 	}
 

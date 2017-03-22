@@ -46,7 +46,7 @@ To authenticate with the Oracle Compute Cloud the provider will prompt for the r
 -	`OPC_USERNAME` - Username for Oracle Public Cloud
 -	`OPC_PASSWORD` - Password for Oracle Public Cloud
 -	`OPC_IDENTITY_DOMAIN` - Identity domain for Oracle Public Cloud
-- `OPC_ALLOW_INSECURE_ENDPOINT` - Allow self signed certificates
+- `OPC_INSECURE` - Allow self signed certificates
 
 or directly in the terraform configuration:
 

@@ -7,12 +7,12 @@ import (
 )
 
 type Config struct {
-	User                  string
-	Password              string
-	IdentityDomain        string
-	Endpoint              string
-	MaxRetryTimeout       int
-	AllowInsecureEndpoint bool
+	User            string
+	Password        string
+	IdentityDomain  string
+	Endpoint        string
+	MaxRetryTimeout int
+	Insecure        bool
 }
 
 type storageAttachment struct {
@@ -32,7 +32,7 @@ func (c *Config) Client() (*OPCClient, error) {
 		return nil, fmt.Errorf("Invalid endpoint URI: %s", err)
 	}
 
-	client := compute.NewComputeClient(c.IdentityDomain, c.User, c.Password, u, c.AllowInsecureEndpoint)
+	client := compute.NewComputeClient(c.IdentityDomain, c.User, c.Password, u, c.Insecure)
 	authenticatedClient, err := client.Authenticate()
 	if err != nil {
 		return nil, fmt.Errorf("Authentication failed: %s", err)

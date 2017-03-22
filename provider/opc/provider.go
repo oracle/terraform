@@ -43,10 +43,10 @@ func Provider() terraform.ResourceProvider {
 				DefaultFunc: schema.EnvDefaultFunc("OPC_MAX_RETRY_TIMEOUT", 3000),
 				Description: "Max num seconds to wait for successful response when operating on resources within OPC (defaults to 3000)",
 			},
-			"allowInsecureEndpoint": &schema.Schema{
+			"insecure": &schema.Schema{
 				Type:        schema.TypeBool,
 				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("OPC_ALLOW_INSECURE_ENDPOINT", false),
+				DefaultFunc: schema.EnvDefaultFunc("OPC_INSECURE", false),
 				Description: "Use for self signed certificates",
 			},
 		},
@@ -70,12 +70,12 @@ func Provider() terraform.ResourceProvider {
 
 func providerConfigure(d *schema.ResourceData) (interface{}, error) {
 	config := Config{
-		User:                  d.Get("user").(string),
-		Password:              d.Get("password").(string),
-		IdentityDomain:        d.Get("identityDomain").(string),
-		Endpoint:              d.Get("endpoint").(string),
-		MaxRetryTimeout:       d.Get("maxRetryTimeout").(int),
-		AllowInsecureEndpoint: d.Get("allowInsecureEndpoint").(bool),
+		User:            d.Get("user").(string),
+		Password:        d.Get("password").(string),
+		IdentityDomain:  d.Get("identityDomain").(string),
+		Endpoint:        d.Get("endpoint").(string),
+		MaxRetryTimeout: d.Get("maxRetryTimeout").(int),
+		Insecure:        d.Get("insecure").(bool),
 	}
 
 	return config.Client()

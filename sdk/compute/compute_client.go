@@ -26,10 +26,10 @@ type Client struct {
 }
 
 // NewComputeClient creates a new, unauthenticated compute Client.
-func NewComputeClient(identityDomain, userName, password string, apiEndpoint *url.URL, allowInsecureEndpoint bool) *Client {
+func NewComputeClient(identityDomain, userName, password string, apiEndpoint *url.URL, insecure bool) *Client {
 
 	cfg := &tls.Config{
-		InsecureSkipVerify: allowInsecureEndpoint,
+		InsecureSkipVerify: insecure,
 	}
 
 	return &Client{

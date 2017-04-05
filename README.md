@@ -104,7 +104,7 @@ To build the provider plugin against a specific terraform version, checkout the 
 $ terraform --version
 Terraform v0.8.8
 
-$ ( cd $GOPATH/src/github.com/hashicorp/terraform && git checkout v0.8.8 )
+$ ( cd $GOPATH/src/github.com/hashicorp/terraform && git fetch && git checkout v0.8.8 )
 $ go build -o $GOPATH/terraform-provider-opc github.com/oracle/terraform-provider-compute/provider
 ```
 

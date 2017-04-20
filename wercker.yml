@@ -29,9 +29,9 @@ build:
     # Gets the dependencies
     - script:
         name: go get
+        cwd: provider
         code: |
-          cd provider
-          go get
+          go get -v -u
 
     # Build the project
     - script:

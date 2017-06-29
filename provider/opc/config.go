@@ -12,16 +12,17 @@ type Config struct {
 	IdentityDomain  string
 	Endpoint        string
 	MaxRetryTimeout int
+	Insecure        bool
 }
 
 type storageAttachment struct {
-	index int
+	index        int
 	instanceName *compute.InstanceName
 }
 
 type OPCClient struct {
 	*compute.AuthenticatedClient
-	MaxRetryTimeout int
+	MaxRetryTimeout                 int
 	storageAttachmentsByVolumeCache map[string][]storageAttachment
 }
 
@@ -31,15 +32,15 @@ func (c *Config) Client() (*OPCClient, error) {
 		return nil, fmt.Errorf("Invalid endpoint URI: %s", err)
 	}
 
-	client := compute.NewComputeClient(c.IdentityDomain, c.User, c.Password, u)
+	client := compute.NewComputeClient(c.IdentityDomain, c.User, c.Password, u, c.Insecure)
 	authenticatedClient, err := client.Authenticate()
 	if err != nil {
 		return nil, fmt.Errorf("Authentication failed: %s", err)
 	}
 
 	opcClient := &OPCClient{
-		AuthenticatedClient: authenticatedClient,
-		MaxRetryTimeout:     c.MaxRetryTimeout,
+		AuthenticatedClient:             authenticatedClient,
+		MaxRetryTimeout:                 c.MaxRetryTimeout,
 		storageAttachmentsByVolumeCache: make(map[string][]storageAttachment),
 	}
 

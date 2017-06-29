@@ -26,7 +26,12 @@ type Client struct {
 }
 
 // NewComputeClient creates a new, unauthenticated compute Client.
-func NewComputeClient(identityDomain, userName, password string, apiEndpoint *url.URL) *Client {
+func NewComputeClient(identityDomain, userName, password string, apiEndpoint *url.URL, insecure bool) *Client {
+
+	cfg := &tls.Config{
+		InsecureSkipVerify: insecure,
+	}
+
 	return &Client{
 		credentials: credentials{
 			identityDomain: identityDomain,
@@ -38,7 +43,8 @@ func NewComputeClient(identityDomain, userName, password string, apiEndpoint *ur
 			httpClient: &http.Client{
 				Transport: &http.Transport{
 					Proxy:               http.ProxyFromEnvironment,
-					TLSHandshakeTimeout: 120 * time.Second},
+					TLSHandshakeTimeout: 120 * time.Second,
+					TLSClientConfig:     cfg},
 			},
 		},
 	}

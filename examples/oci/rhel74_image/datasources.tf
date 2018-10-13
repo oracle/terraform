@@ -46,3 +46,14 @@ data "external" "ipxe_gen" {
 		iso_url			 = "${var.iso_url}"
 	}
 }
+
+data "template_cloudinit_config" "cloudinit_config" {
+  gzip          = false
+  base64_encode = true
+
+  part {
+    filename     = "ipxe.sh"
+    content_type = "text/x-shellscript"
+    content      = "${file("ipxe.sh")}"
+  }
+}

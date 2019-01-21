@@ -5,7 +5,8 @@ provider "oci" {
   user_ocid            = "${var.user_ocid}"
   fingerprint          = "${var.fingerprint}"
   private_key_path     = "${var.private_key_path}"
-  private_key_password = "${var.private_key_password}"
+# Use 'private_key_password' parameter if you have set passphrase for your SSH key.
+#  private_key_password = "${var.private_key_password}"
   region               = "${var.region}"
 }
 
@@ -13,7 +14,8 @@ variable "tenancy_ocid" {}
 variable "user_ocid" {}
 variable "fingerprint" {}
 variable "private_key_path" {}
-variable "private_key_password" {}
+# Use 'private_key_password' variable if you have set passphrase for your SSH key.
+#variable "private_key_password" {}
 variable "ssh_public_key" {}
 variable "region" {}
 
@@ -22,7 +24,8 @@ variable "ipxe_instance" {
 	default = {
 		name = "ipxe-rhel74"
 		hostname = "ipxe-rhel74"
-		shape = "VM.Standard1.1"
+	# Make sure your account has proper limits for this shape.
+		shape = "VM.Standard2.1"
 	}
 }
 

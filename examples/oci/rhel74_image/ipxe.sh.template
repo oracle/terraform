@@ -17,7 +17,7 @@ MY_OCID=`curl -s http://169.254.169.254/opc/v1/instance/id`
 OCI="oci --auth=instance_principal"
 
 ### DO NOT CHANGE THIS SHAPE!!! ###
-SHAPE="BM.Standard1.36"
+SHAPE="BM.Standard2.52"
 
 yum -y -q update
 yum -y -q install httpd rsync lzma gcc libffi-devel python-devel openssl-devel unzip gcc rsyslog jq python-firewall

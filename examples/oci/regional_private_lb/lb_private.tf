@@ -33,7 +33,7 @@ resource "oci_load_balancer_backendset" "lb1-bes1" {
 resource "oci_load_balancer_listener" "lb1-listener1" {
   load_balancer_id         = "${oci_load_balancer.lb1.id}"
   name                     = "http"
-  default_backend_set_name = "${oci_load_balancer_backendset.lb1-bes1.id}"
+  default_backend_set_name = "${oci_load_balancer_backendset.lb1-bes1.name}"
   port                     = "${var.ha_app_port}"
   protocol                 = "${upper(var.ha_app_protocol)}"
 }
@@ -69,7 +69,7 @@ resource "oci_load_balancer_backendset" "lb2-bes1" {
 resource "oci_load_balancer_listener" "lb2-listener1" {
   load_balancer_id         = "${oci_load_balancer.lb2.id}"
   name                     = "http"
-  default_backend_set_name = "${oci_load_balancer_backendset.lb2-bes1.id}"
+  default_backend_set_name = "${oci_load_balancer_backendset.lb2-bes1.name}"
   port                     = "${var.ha_app_port}"
   protocol                 = "${upper(var.ha_app_protocol)}"
 }

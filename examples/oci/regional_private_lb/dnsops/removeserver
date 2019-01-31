@@ -1,4 +1,5 @@
 #!/bin/bash
+# Copyright (c) 2018, 2019, Oracle and/or its affiliates. All rights reserved.
 
 zonefile=$1
 ip=$2

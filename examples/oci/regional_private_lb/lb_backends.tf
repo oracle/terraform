@@ -67,7 +67,7 @@ EOF
 
 resource "oci_load_balancer_backend" "lb1-be1" {
   load_balancer_id = "${oci_load_balancer.lb1.id}"
-  backendset_name  = "${oci_load_balancer_backendset.lb1-bes1.id}"
+  backendset_name  = "${oci_load_balancer_backendset.lb1-bes1.name}"
   ip_address       = "${oci_core_instance.instance1.private_ip}"
   port             = 80
   backup           = false
@@ -78,7 +78,7 @@ resource "oci_load_balancer_backend" "lb1-be1" {
 
 resource "oci_load_balancer_backend" "lb1-be2" {
   load_balancer_id = "${oci_load_balancer.lb1.id}"
-  backendset_name  = "${oci_load_balancer_backendset.lb1-bes1.id}"
+  backendset_name  = "${oci_load_balancer_backendset.lb1-bes1.name}"
   ip_address       = "${oci_core_instance.instance2.private_ip}"
   port             = 80
   backup           = false
@@ -91,7 +91,7 @@ resource "oci_load_balancer_backend" "lb1-be2" {
 
 resource "oci_load_balancer_backend" "lb2-be1" {
   load_balancer_id = "${oci_load_balancer.lb2.id}"
-  backendset_name  = "${oci_load_balancer_backendset.lb2-bes1.id}"
+  backendset_name  = "${oci_load_balancer_backendset.lb2-bes1.name}"
   ip_address       = "${oci_core_instance.instance1.private_ip}"
   port             = 80
   backup           = false
@@ -102,7 +102,7 @@ resource "oci_load_balancer_backend" "lb2-be1" {
 
 resource "oci_load_balancer_backend" "lb2-be2" {
   load_balancer_id = "${oci_load_balancer.lb2.id}"
-  backendset_name  = "${oci_load_balancer_backendset.lb2-bes1.id}"
+  backendset_name  = "${oci_load_balancer_backendset.lb2-bes1.name}"
   ip_address       = "${oci_core_instance.instance2.private_ip}"
   port             = 80
   backup           = false

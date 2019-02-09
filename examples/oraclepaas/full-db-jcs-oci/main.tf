@@ -42,7 +42,7 @@ resource "oci_database_db_system" "database" {
   database_edition = "ENTERPRISE_EDITION"
   license_model    = "LICENSE_INCLUDED"
 
-  ssh_public_keys = ["${trimspace(file("~/.ssh/id_rsa.pub"))}"]
+  ssh_public_keys = ["${trimspace(file(var.ssh_public_key_file))}"]
 
   db_home {
     display_name = "Database for JCS"
@@ -67,7 +67,7 @@ resource "oraclepaas_java_service_instance" "jcs" {
   metering_frequency     = "HOURLY"        // HOURLY MONTHLY
   bring_your_own_license = true
 
-  ssh_public_key = "${file("~/.ssh/id_rsa.pub")}"
+  ssh_public_key = "${file(var.ssh_public_key_file)}"
 
   # OCI Settings
   region              = "${var.region}"
@@ -92,11 +92,7 @@ resource "oraclepaas_java_service_instance" "jcs" {
 
   backups {
     cloud_storage_container = "https://swiftobjectstorage.${var.region}.oraclecloud.com/v1/${var.tenancy}/${local.jcs_backup_bucket}"
-
-    # cloud_storage_username  = "${var.object_storage_user}"
-    # cloud_storage_password  = "${var.swift_password}"
-
-    cloud_storage_username = "${oci_identity_user.psm-user.name}"
-    cloud_storage_password = "${oci_identity_auth_token.psm_auth_token.token}"
+    cloud_storage_username  = "${oci_identity_user.psm-user.name}"
+    cloud_storage_password  = "${oci_identity_auth_token.psm_auth_token.token}"
   }
 }

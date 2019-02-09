@@ -18,3 +18,7 @@ variable subnet_ocid {}
 variable psm_backup_group_name {
   default = "psm_backup_group"
 }
+
+variable ssh_public_key_file {
+  default = "~/.ssh/id_rsa.pub"
+}

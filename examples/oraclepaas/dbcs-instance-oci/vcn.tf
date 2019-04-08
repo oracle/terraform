@@ -1,4 +1,4 @@
-// based on https://github.com/oracle/terraform-provider-oci/blob/master/docs/examples/networking/vcn_default/vcn.tf
+// Copyright (c) 2018, 2019, Oracle and/or its affiliates. All rights reserved.
 
 resource "oci_core_virtual_network" "tf-vcn1" {
   cidr_block     = "10.0.0.0/16"

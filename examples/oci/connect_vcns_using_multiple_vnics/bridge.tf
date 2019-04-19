@@ -1,4 +1,5 @@
 // Copyright (c) 2018, 2019, Oracle and/or its affiliates. All rights reserved.
+// Licensed under the Universal Permissive License v 1.0 as shown at http://oss.oracle.com/licenses/upl.
 resource "oci_core_instance_configuration" "bridge_instance_configuration" {
   compartment_id = "${var.compartment_ocid}"
   display_name   = "BridgeInstance"

@@ -75,7 +75,7 @@ resource "oci_core_subnet" "MgmtSubnet" {
   dhcp_options_id     = "${oci_core_virtual_network.CoreVCN.default_dhcp_options_id}"
 }
 
-# Frist VCN Private instance details
+# First VCN Private instance details
 resource "oci_core_security_list" "PrivateSecurityList" {
   compartment_id = "${var.compartment_ocid}"
   display_name   = "PrivateSecurityList"
